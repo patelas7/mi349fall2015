@@ -1,11 +1,27 @@
 body{
 	font-family: "Helvetica";
-	margin: 0 auto;
-	width: 1200px;
-	background: #ccc;
+	background-color: #ccc;
 }
 
 article{
-	background: #fff;
-	border-top:;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	line-height: 2em;
+}
+
+img{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1{
+	text-align: center;
+	font-size: 250%;
+}
+
+
+p{
+	text-indent: 50px;
+	
 }
