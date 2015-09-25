@@ -18,7 +18,23 @@ article{
 }
 
 .recipe{
+	line-height: 2em;
+}
+
+.recipe h1{
+	text-align: center;
+	color: #000099;
+	font-size: 200%;
 }
 
 .recipe h2{
+	color: #0066FF;
+}
+
+.recipe ul{
+	list-style-type: square;
+}
+
+.recipe p{
+	text-indent: 50px;
 }
