@@ -1,0 +1,60 @@
+body {
+  background: #ccc;
+  margin: 0;
+  font-family: Helvetica;
+}
+
+.container {
+  margin: 0 auto;
+  width: 700px;
+  padding-top: 0px;
+  background: #fff;
+}
+
+.pager {
+  padding: 20px 40px;
+  background: #fff url(Paper-Graphics.jpg) no-repeat center center fixed;
+}
+
+h1{
+	text-align: center;
+	font-size: 30px;
+	color: #B22222;
+}
+
+h2{
+	padding-top: 10px;
+	border-style: solid;
+	border-bottom-width: 15px;
+	border-bottom-color: #8B4513;
+}
+
+.personas {
+	margin: 0;
+	display: inline-block;
+	text-decoration: none;
+	width: 180px;
+	padding: 10px;
+}
+
+.personas p{
+	text-align: left;
+	width: 180px;
+}
+
+.comps a{
+	display: inline-block;
+	text-decoration: none;
+	margin: 0;
+	width: 180px;
+    padding: 10px;
+}
+
+a:hover{
+	background: yellow;
+	font-size: 1.4em;
+}
+
+
+
+

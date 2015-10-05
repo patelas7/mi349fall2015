@@ -48,6 +48,7 @@ ul li:nth-child(2n+4){
 }
 
 /* Inline, Inline-Block and Block */
+/* Float example */
 
 ul{
 	margin: 0;
@@ -71,8 +72,3 @@ h2{
 	clear: both;
 }
 
-
-
-
-
-/* Float example */
