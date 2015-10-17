@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title> Good and Bad Design </title>
+	<link rel="stylesheet" href="good-style.css" media="screen">
+  </head>
+<body>
+	<h1>Good and Bad Design</h1>
+	<form name="form1">
+	   User1 name: <input type="text" name="u1name"><br>
+	   User1 password: <input type="text" name="u1pass"><br>
+	</form>
+	<form name="form2">
+	   User2 name: <input type="text" name="u2name"><br>
+	   User2 password: <input type="text" name="u2pass"><br>
+	</form>
+
+	<button type="submit" form="form1" value="Submit1">Submit</button> 
+	<button type="submit" form="form1" value="Submit2">Submit</button>
+
+
+	<form class="form3">
+	  <fieldset class="user1">
+		<legend>User1</legend>
+		<label>Username:
+		  <input type="text" name="username">
+		</label>
+		<label>Password:
+		  <input type="text" name="password">
+		</label>
+		<input class="button1" type="submit" name="submit1" value="Submit">
+	  </fieldset>
+
+	  <fieldset class = "user2">
+		<legend>User2</legend>
+		<label>Username:
+		  <input type="text" name="username2">
+		</label>
+		<label>Password:
+		  <input type="text" name="password2">
+		</label>
+		<input class="button2" type="submit" name="submit2" value="Submit">
+	  </fieldset>
+	</form>
+	
+</body>
+</html>

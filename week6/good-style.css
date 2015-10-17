@@ -1,0 +1,40 @@
+body{
+  background: #FFFAFA;
+  margin: 0;
+  font-family: Helvetica;
+}
+
+h1{
+	text-align: center;
+}
+
+.form3{
+  margin: 0 auto;
+  padding-top:50px;
+  width: 500px;
+
+}
+
+.user1{
+  float: left;
+  width: 180px;
+  height:150px;
+  padding-right:0px;
+  padding-left: 30px;
+}
+
+.user2{
+  float:right;
+  width: 180px;
+  height:150px;
+  padding-right:0px;
+  padding-left: 30px;
+  
+}
+
+
+.user1 input, .user2 input{
+  margin: 5px;
+}
+
+
