@@ -6,41 +6,59 @@
 .column{
 	float: left;
 	margin: 0 auto;
-	width: 30%;
+	width: 33.33%;
 	background: yellow;
 	
 }
 .column2{
 	float: left;
-	width: 40%;
+	margin: 0 auto;
+	width: 33.33%;
 	background: red;
 	
 }
 .column3{
 	float: left;
-	width: 30%;
+	width: 33.33%;
+	margin: 0 auto;
 	background: orange;
 	
 }
-/*
+
 @media(min-width: 400px){
 	.column{
 		width: 100%;
 	}
 	.column2{
-		width: 100%;
+		width: 0%;
 	}
 	.column3{
-		width: 100%;
+		width: 0%;
+	}
+}
+@media(min-width: 800px){
+	.column{
+		width: 50%;
+	}
+	.column2{
+		width: 50%;
+	}
+	.column3{
+		width: 0%;
+	}
+}
+@media(min-width: 1200px){
+	.column{
+		width: 33.33%;
+	}
+	.column2{
+		width: 33.33%;
+	}
+	.column3{
+		width: 33.33%;
 	}
 }
 
-@media
-(-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi){
-	}
-
-*/
 
 
 
