@@ -1,0 +1,26 @@
+body{
+	background: #484848;
+	margin: 0;
+	font-family: Helvetica;
+}
+.container{
+	margin: 0 auto;
+	width: 1000px;
+	background-color: black;
+}
+
+.top {
+    width: 1000px;
+    height: 128px;
+	background-image: url(images/hamburger.png), url(images/header.png);
+	background-position: left top, right top;
+	background-repeat: no-repeat;
+}
+
+.main {
+	position: relative;
+    width: 1000px;
+	height: 1043px;
+	background-image: url(images/night-sky-starsp.png);
+	background-repeat: no-repeat;
+ }
