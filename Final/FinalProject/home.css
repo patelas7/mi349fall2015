@@ -17,10 +17,20 @@ body{
 	background-repeat: no-repeat;
 }
 
-.main {
+.background {
 	position: relative;
     width: 1000px;
-	height: 1043px;
-	background-image: url(images/night-sky-starsp.png);
+	height: 1042px;
+	background-image: url(images/background.png);
 	background-repeat: no-repeat;
+ }
+ 
+.backgroundButtons {
+	position:relative;
+	top: 50%;
+	left: 0;
+ }
+ 
+ .backgroundButtons img {
+	margin-left: 200px;
  }
