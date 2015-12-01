@@ -10,8 +10,8 @@ body{
 }
 
 .top {
-    width: 1000px;
-    height: 128px;
+  width: 1000px;
+  height: 128px;
 	background-image: url(images/hamburger.png), url(images/header.png);
 	background-position: left top, right top;
 	background-repeat: no-repeat;
@@ -19,18 +19,21 @@ body{
 
 .background {
 	position: relative;
-    width: 1000px;
+	width: 1000px;
 	height: 1042px;
 	background-image: url(images/background.png);
 	background-repeat: no-repeat;
  }
- 
+ /*
 .backgroundButtons {
 	position:relative;
 	top: 50%;
 	left: 0;
- }
- 
- .backgroundButtons img {
-	margin-left: 200px;
+ }*/
+
+ .background img {
+	 position: relative;
+	 top: 50%;
+	 left: 0;
+	 margin-left: 220px;
  }
