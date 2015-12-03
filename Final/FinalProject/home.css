@@ -7,7 +7,20 @@ body{
 	margin: 0 auto;
 	width: 1000px;
 	background-color: black;
-	position: relative
+	position: relative;
+}
+
+.containerOverlay{
+	width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  background-color: white;
+  color: #aaa;
+  opacity: .9;
+  filter: alpha(opacity=60);
 }
 
 .top {
@@ -26,10 +39,66 @@ body{
 	background-repeat: no-repeat;
  }
 
-
- .background img {
-	 position: relative;
-	 top: 50%;
-	 left: 0;
-	 margin-left: 220px;
+.background img {
+	position: relative;
+	top: 50%;
+	left: 0;
+	margin-left: 220px;
  }
+
+.signInForm{
+ 	width:500px;
+ 	height:300px;
+ 	margin-left: 300px;
+ 	margin-top:300px;
+ 	background-color:#003366;
+ 	border-radius: 20px;
+ 	box-shadow:0px 0px 10px 0px #424242;
+ 	padding-top:70px;
+ 	padding-left:115px;
+ 	box-sizing:border-box;
+ 	font-family:helvetica;
+ 	visibility:hidden;
+ 	display:none;
+ }
+
+.signInForm label{
+	 font-size:35px;
+	 position:absolute;
+	 top:310px;
+	 left:310px;
+ }
+
+.signInForm #closeButton{
+	 position:absolute;
+	 top:310px;
+	 left:750px;
+	 width:35px;
+	 height:35px;
+ }
+
+.signInForm #user{
+	width:250px;
+	height:40px;
+	border:3px solid silver;
+	border-radius:4px;
+	padding:5px;
+}
+
+.signInForm #password{
+	margin-top:10px;
+	width:250px;
+	height:40px;
+	border:3px solid silver;
+	border-radius:4px;
+	padding:5px;
+}
+
+.signInForm #loginButton{
+	margin-top:10px;
+	width:265px;
+	height:40px;
+	color:black;
+	background-color:silver;
+	font-size:24px;
+}

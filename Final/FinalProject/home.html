@@ -13,8 +13,8 @@
 	<div class="container">
 		<div class="top"></div>
 		<div class="background">
-			<img src="images/sign-in-button.png" alt="Sign In" />
-			<img src="images/create-account-button.png" alt="Create Account" />
+			<img id="signInButton" src="images/sign-in-button.png" alt="Sign In" />
+			<img id="createButton" src="images/create-account-button.png" alt="Create Account" />
 		</div>
 
 		<!--http://codepen.io/anon/pen/zrOYaR !-->
@@ -22,16 +22,17 @@
 		<!--http://codepen.io/anon/pen/RrbRYm !-->
 		<!--http://codepen.io/anon/pen/WreoEY !-->
 		<!--http://codepen.io/anon/pen/RrbLJx !-->
-		<!--<div class="containerOverlay">
-			<div id = "signInForm">
-            <form method = "post" action = "">
-                <input type = "image" id = "closeLogin" src = "images/close-button.png">
-                <input type = "text" id = "user" placeholder = "Username" name = "uid">
-                <input type = "password" id = "password" name = "upass" placeholder = "********">
-                <input type = "submit" id = "dologin" value = "Login">
-            </form>
+		<div class="containerOverlay">
+			<div class = "signInForm">
+				<label>Sign In</label>
+        <form>
+            <input type = "image" id = "closeButton" src = "images/close-button.png">
+            <input type = "text" id = "user" placeholder = "Username">
+            <input type = "password" id = "password" placeholder = "********">
+            <input type = "button" id = "loginButton" value = "Login">
+        </form>
     	</div>
-		</div>!-->
+		</div>
 
 	</div>
 </body>
