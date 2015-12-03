@@ -20,31 +20,14 @@ $(document).ready(function(){
        alert("Fill in both username and password");
      }
      else{
-       var postData = {
-         'username' : user,
-         'password' : password;
-         'method' : 'login'
-       };
-       $.post('http://webdev.cse.msu.edu/~patelas7/MI349/FinalPhp/login.php', postData, )
-       $.ajax({
-         type: "POST",
-         url: "postForm.ajax.php",
-         data: $("#myForm").serialize(),
-         dataType: "json",
 
-         success: function(msg){
-           $("#formResponse").removeClass('error');
-           $("#formResponse").removeClass('success');
-           $("#formResponse").addClass(msg.status);
-           $("#formResponse").html(msg.message);
-
-         },
-         error: function(e){
-           console.log(e.message);
-         }
+       $.post('http://webdev.cse.msu.edu/~patelas7/MI349/FinalPhp/login.php',{username: user, password: password, method: "login"}, function(data){
+         alert(data);
+       }).fail(function(e){
+         console.log(e.message);
        });
-       //make sure the form doesn't post
-       return false;*/
+       return false;
+
      }
 
   });
