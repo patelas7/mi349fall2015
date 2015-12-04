@@ -11,10 +11,18 @@
 
 <body>
 	<div class="container">
-		<div class="top"></div>
+		<div class="top">
+			<img id="burgerIcon" src = "images/hamburger.png" alt = "Hamburger Icon" />
+		</div>
 		<div class="background">
 			<img id="signInButton" src="images/sign-in-button.png" alt="Sign In" />
 			<img id="createButton" src="images/create-account-button.png" alt="Create Account" />
+		</div>
+
+		<div class="sideMenu">
+			<div id="home">Home</div>
+			<div id="help">Help</div>
+			<div id="about">About</div>
 		</div>
 
 		<!--http://codepen.io/anon/pen/zrOYaR !-->
@@ -32,7 +40,21 @@
             <input type = "button" id = "loginButton" value = "Login">
         </form>
     	</div>
+
+			<div class = "createForm">
+				<label>Create Account</label>
+				<form>
+					<input type = "image" id = "closeCreate" src = "images/close-button.png">
+					<input type = "text" id = "userCreate" placeholder = "Username">
+					<input type = "password" id = "passwordCreate" placeholder = "Password">
+					<input type = "password" id = "passwordReCreate" placeholder = "Retype Password">
+					<input type = "button" id = "signUpButton" value = "Sign Up">
+				</form>
+			</div>
+
+
 		</div>
+
 
 	</div>
 </body>

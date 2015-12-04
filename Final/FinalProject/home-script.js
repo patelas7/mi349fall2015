@@ -45,41 +45,67 @@ $(document).ready(function(){
                }
            }
         });
-       /*$.post("http://webdev.cse.msu.edu/~patelas7/MI349/FinalPhp/login.php",
-        {username: user, password: pass, method: "login"},
-        function(data, textStatus, jqXHR)
-        {
-          console.log(data);
-        //data - response from server
-      }, 'json').fail(function(jqXHR, textStatus, errorThrown)
-        {
-          alert(textStatus);
-        });
-        return false;*/
-
-      /* $.ajax({
-
-         url : "http://webdev.cse.msu.edu/~patelas7/MI349/FinalPhp/login.php",
-         type: "POST",
-         dataType : "json",
-         data: {username:user, password:pass, method:"login"},
-         success:function(data) { alert(data); },
-         error: function() {alert("error"); }
-
-
-
-       });
-       return false;*/
-
-      /* $.post('http://webdev.cse.msu.edu/~patelas7/MI349/FinalPhp/login.php',{'username': user, 'password': password, 'method': 'login'}, function(data){
-         alert(data);
-       }).fail(function(e){
-         console.log(e.message);
-       });
-       return false;*/
-
      }
-
   });
+
+  $("#createButton").click(function(){
+    $(".containerOverlay").css({"display":"block"});
+    $(".createForm").fadeIn();
+    $(".createForm").css({"visibility":"visible","display":"block"});
+  });
+
+  $("#closeCreate").click(function(){
+    $(".createForm").fadeOut();
+    $(".createForm").css({"visibility":"hidden","display":"none"});
+    $(".containerOverlay").css({"display":"none"});
+  });
+
+  $('#signUpButton').click(function(){
+    var user = $('#userCreate').val();
+    var pass = $('#passwordCreate').val();
+    var repass = $('#passwordReCreate').val();
+    if(user == '' || pass == '' || repass == ''){
+      alert("Fill in all fields of the form");
+    }
+    else if (pass != repass){
+      alert("Passwords do not match!");
+    }
+    else{
+
+      var data = {'username':user,'password':pass, 'method':'create'};
+       $.ajax({
+         url: 'http://webdev.cse.msu.edu/~patelas7/MI349/FinalPhp/login.php',
+         type: 'POST',
+         contentType:'application/json',
+         data: JSON.stringify(data),
+         dataType:'json',
+         success: function(data){
+           //On ajax success do this
+             console.log(data);
+            },
+         error: function(xhr, ajaxOptions, thrownError) {
+            //On error do this
+
+              if (xhr.status == 200) {
+
+                  alert(ajaxOptions);
+              }
+              else {
+                  alert(xhr.status);
+                  alert(thrownError);
+              }
+          }
+       });
+    }
+ });
+
+ $("#burgerIcon").click(function(){
+   if($('.sideMenu').is(':visible')){
+     $(".sideMenu").css({"visibility":"hidden","display":"none"});
+   }
+   else{
+      $(".sideMenu").css({"visibility":"visible","display":"block"});
+   }
+ });
 
 });

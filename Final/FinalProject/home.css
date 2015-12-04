@@ -24,10 +24,11 @@ body{
 }
 
 .top {
+
   width: 1000px;
   height: 128px;
-	background-image: url(images/hamburger.png), url(images/header.png);
-	background-position: left top, right top;
+	background-image: url(images/header.png);
+	background-position: right top;
 	background-repeat: no-repeat;
 }
 
@@ -101,4 +102,97 @@ body{
 	color:black;
 	background-color:silver;
 	font-size:24px;
+}
+
+.createForm{
+   width:500px;
+   height:400px;
+	 margin-left: 300px;
+   margin-top:300px;
+   background-color:#003366;
+   border-radius: 20px;
+   box-shadow:0px 0px 10px 0px #424242;
+   padding-top:100px;
+   padding-left:115px;
+   box-sizing:border-box;
+   font-family:helvetica;
+   visibility:hidden;
+   display:none;
+}
+
+.createForm label{
+
+   font-size:35px;
+   position:absolute;
+   top:310px;
+   left:310px;
+
+}
+
+.createForm #closeCreate
+{
+   position:absolute;
+   top:310px;
+   left:750px;
+   width:35px;
+   height:35px;
+}
+
+.createForm #userCreate
+{
+   width:250px;
+   height:40px;
+   border:3px solid silver;
+   border-radius:4px;
+   padding:5px;
+
+}
+.createForm #passwordCreate
+{
+   margin-top:10px;
+   width:250px;
+   height:40px;
+   border:3px solid silver;
+   border-radius:4px;
+   padding:5px;
+}
+.createForm #passwordReCreate{
+   margin-top:10px;
+   width:250px;
+   height:40px;
+   border:3px solid silver;
+   border-radius:4px;
+   padding:5px;
+}
+.createForm #signUpButton
+{
+   margin-top:10px;
+   width:265px;
+   height:40px;
+   color:black;
+   background-color:silver;
+   font-size:24px;
+}
+
+.sideMenu {
+   position:absolute;
+   top:128px;
+	 bottom:0px;
+   width:140px;
+   background-color:#000033;
+   padding:15px 10px 5px 10px;
+   font-size:30px;
+   line-height:250%;
+	 visibility: hidden;
+   display:none;
+}
+
+
+.sideMenu div{
+	color:#0099FF;
+	background-color: white;
+	padding-left: 20px;
+  margin-top: 55px;
+  border-radius: 25px;
+  border: 2px solid black;
 }
