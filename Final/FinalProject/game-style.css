@@ -1,0 +1,41 @@
+body{
+	background: #484848;
+	margin: 0;
+	font-family: Helvetica;
+}
+.container{
+	margin: 0 auto;
+	width: 1000px;
+  min-height:100vh;
+	background-color: white;
+  position:relative;
+}
+
+.top {
+  width: 1000px;
+  height: 128px;
+	background-image: url(images/header.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+
+.canvas {
+  width: 600px;
+  height: 500px;
+  position: relative;
+  margin-top: 155px;
+  margin-left: 222px;
+	background-image: url(hangman-images/canvas.png);
+  background-repeat: no-repeat;
+}
+
+.alphabet{
+  width: 500px;
+  min-height:200;
+  border: 2px solid blue;
+  padding: 10px;
+}
+
+.alphabet button{
+  margin: 5px;
+}
