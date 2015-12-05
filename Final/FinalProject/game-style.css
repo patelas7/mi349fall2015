@@ -20,22 +20,40 @@ body{
 }
 
 .canvas {
+	float:left;
+	overflow: hidden;
   width: 600px;
   height: 500px;
-  position: relative;
-  margin-top: 155px;
-  margin-left: 222px;
+  margin-top: 150px;
+  margin-left: 160px;
+	margin-bottom: 50px;
 	background-image: url(hangman-images/canvas.png);
   background-repeat: no-repeat;
+
 }
 
 .alphabet{
-  width: 500px;
-  min-height:200;
+	float:right;
+	overflow: hidden;
+  width: 180px;
+  min-height:70px;
+	margin-right: 5px;
+	margin-top: 250px;
   border: 2px solid blue;
-  padding: 10px;
+  padding: 20px;
 }
 
 .alphabet button{
   margin: 5px;
+}
+
+.wordSolve{
+	clear: both;
+	width: 600px;
+	min-height: 100px;
+	margin-left:200px;
+	margin-top: 150px;
+	border-radius: 25px;
+	border: 2px solid navy;
+	padding: 20px;
 }
