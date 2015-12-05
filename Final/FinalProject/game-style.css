@@ -19,6 +19,27 @@ body{
 	background-repeat: no-repeat;
 }
 
+#title{
+	font-size:70px;
+	position:absolute;
+	top:15%;
+	left:50%;
+}
+#welcome{
+	font-size: 30px;
+	position: absolute;
+	left: 70%;
+}
+#gameStatus{
+	font-size: 40px;
+	position: absolute;
+	top:23%;
+	left: 20%;
+	color: yellow;
+	display:none;
+	visibility: hidden;
+}
+
 .canvas {
 	float:left;
 	overflow: hidden;
@@ -56,4 +77,6 @@ body{
 	border-radius: 25px;
 	border: 2px solid navy;
 	padding: 20px;
+	white-space: pre;
+	font-size: 35px;
 }
