@@ -30,7 +30,7 @@ $(document).ready(function(){
           dataType:'json',
           success: function(data){
             //On ajax success do this
-              console.log(data);
+              console.log();
              },
           error: function(xhr, ajaxOptions, thrownError) {
              //On error do this

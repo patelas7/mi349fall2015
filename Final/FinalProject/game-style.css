@@ -80,3 +80,54 @@ body{
 	white-space: pre;
 	font-size: 35px;
 }
+
+.buttons {
+	display:block;
+	margin-left: 165px;
+	width:800px;
+	height:140px;
+	color:black;
+	padding-top: 50px;
+}
+
+.buttons #saveButton{
+	margin-right: 20px;
+	width:200px;
+	height:50px;
+	border-radius: 20px;
+	border: 2px solid black;
+	background-color:#0000FF;
+	font-size:24px;
+}
+
+.buttons #hintButton{
+	margin-right: 20px;
+	width:200px;
+	height:50px;
+	color:black;
+	border-radius: 20px;
+	border: 2px solid black;
+	background-color:yellow;
+	font-size:24px;
+}
+
+.buttons #giveUpButton{
+	width:200px;
+	height:50px;
+	border-radius: 20px;
+	border: 2px solid black;
+	background-color:red;
+	font-size: 24px;
+}
+
+.buttons #newButton{
+	margin-top:10px;
+	width:200px;
+	height:50px;
+	border-radius: 20px;
+	border: 2px solid black;
+	background-color:#33CC00;
+	font-size: 24px;
+	visibility: hidden;
+	display: none;
+}

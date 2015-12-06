@@ -6,40 +6,42 @@ var bad = 0;
 $(document).ready(function(){
   sessionStorage.setItem("word", "This isn't a bad test");
   sessionStorage.setItem("hint", "This is a hint");
-
   getAlphabet();
 
   //document.getElementById('box').innerHTML = html;
-  $('.letter').click(function(){
-    var id = this.id;
-    alert(id);
-  });
+
   createGame();
 //  var setLetter = function(x) {
   //  document.getElementById('name').innerHTML += x;
 //  };
-
+  $('.letter').click(function(){
+    var id = this.id;
+    alert(id);
+  });
 
 });
 
 function clickedLetter(id){
-  wordTemp = wordTemp.split('');
-  var guess = false;
-  for(var i=0; i<sessionStorage.word.length;i++){
-    if(id == sessionStorage.word.charAt(i).toUpperCase()){
-      wordTemp[i] = id;
-      correct++;
-      guess = true;
-      if(correct == wordLength){
-        drawMan();
+  if(bad != 10){
+    wordTemp = wordTemp.split('');
+    var guess = false;
+    for(var i=0; i<sessionStorage.word.length;i++){
+      if(id == sessionStorage.word.charAt(i).toUpperCase()){
+        wordTemp[i] = id;
+        correct++;
+        guess = true;
+        if(correct == wordLength){
+          drawMan();
+        }
       }
     }
+    if(guess == false){
+      bad++;
+      drawMan();
+    }
+    $(id).hide();
+    $('.wordSolve').text(wordTemp.join(''));
   }
-  if(guess == false){
-    bad++;
-    drawMan();
-  }
-  $('.wordSolve').text(wordTemp.join(''));
 }
 
 function createGame(){
@@ -70,6 +72,48 @@ function getAlphabet(){
 
 function drawMan(){
   if(correct == wordLength){
-    
+    $("#saveButton").hide();
+    $("#hideButton").hide();
+    $("#giveUpButton").hide();
+    $("#newButton").css({"visibility":"visible","display":"block"});
+    $("#gameStatus").text("Congratulations! You solved it!");
+    $("#gameStatus").css({"visibility":"visible","display":"block"});
+  }
+  else if(bad == 1){
+      $(".canvas").css({"background-image": "url(hangman-images/noose.png)"});
+  }
+  else if(bad == 2){
+    $(".canvas").css({"background-image": "url(hangman-images/head.png)"});
+  }
+  else if(bad == 3){
+    $(".canvas").css({"background-image": "url(hangman-images/body.png)"});
+  }
+  else if(bad == 4){
+    $(".canvas").css({"background-image": "url(hangman-images/left-leg.png)"});
+  }
+  else if(bad == 5){
+    $(".canvas").css({"background-image": "url(hangman-images/right-leg.png)"});
+  }
+  else if(bad == 6){
+    $(".canvas").css({"background-image": "url(hangman-images/left-hand.png)"});
+  }
+  else if(bad == 7){
+    $(".canvas").css({"background-image": "url(hangman-images/right-hand.png)"});
+  }
+  else if(bad == 8){
+    $(".canvas").css({"background-image": "url(hangman-images/left-eye.png)"});
+  }
+  else if(bad == 9){
+    $(".canvas").css({"background-image": "url(hangman-images/right-eye.png)"});
+  }
+  else if(bad == 10){
+    $(".canvas").css({"background-image": "url(hangman-images/mouth.png)"});
+    $("#saveButton").hide();
+    $("#hideButton").hide();
+    $("#giveUpButton").hide();
+    $("#newButton").css({"visibility":"visible","display":"block"});
+    $("#gameStatus").text("Congratulations! You solved it!");
+    $("#gameStatus").css({"visibility":"visible","display":"block"});
+
   }
 }
