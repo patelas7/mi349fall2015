@@ -15,19 +15,22 @@ $(document).ready(function(){
   //  document.getElementById('name').innerHTML += x;
 //  };
   $('.letter').click(function(){
-    var id = this.id;
-    alert(id);
+    clickedLetter($("#" + this.id).text());
+    $("#" + this.id).hide();
   });
 
 });
 
 function clickedLetter(id){
   if(bad != 10){
-    wordTemp = wordTemp.split('');
+    wordTemp = wordTemp.split("");
     var guess = false;
     for(var i=0; i<sessionStorage.word.length;i++){
+
       if(id == sessionStorage.word.charAt(i).toUpperCase()){
+
         wordTemp[i] = id;
+        //console.log("wordTemp: " + wordTemp[i]);
         correct++;
         guess = true;
         if(correct == wordLength){
@@ -39,15 +42,18 @@ function clickedLetter(id){
       bad++;
       drawMan();
     }
-    $(id).hide();
-    $('.wordSolve').text(wordTemp.join(''));
+    wordTemp = wordTemp.join("");
+    $('.wordSolve').text(wordTemp);
+
+
+
   }
 }
 
 function createGame(){
   for(var i=0; i<sessionStorage.word.length; i++){
     if(/^[a-zA-Z]+$/.test(sessionStorage.word.charAt(i))){
-      wordTemp += '_ ';
+      wordTemp += '_';
 
       wordLength += 1;
     }
@@ -73,7 +79,7 @@ function getAlphabet(){
 function drawMan(){
   if(correct == wordLength){
     $("#saveButton").hide();
-    $("#hideButton").hide();
+    $("#hintButton").hide();
     $("#giveUpButton").hide();
     $("#newButton").css({"visibility":"visible","display":"block"});
     $("#gameStatus").text("Congratulations! You solved it!");
@@ -109,10 +115,10 @@ function drawMan(){
   else if(bad == 10){
     $(".canvas").css({"background-image": "url(hangman-images/mouth.png)"});
     $("#saveButton").hide();
-    $("#hideButton").hide();
+    $("#hintButton").hide();
     $("#giveUpButton").hide();
     $("#newButton").css({"visibility":"visible","display":"block"});
-    $("#gameStatus").text("Congratulations! You solved it!");
+    $("#gameStatus").text("Game Over");
     $("#gameStatus").css({"visibility":"visible","display":"block"});
 
   }
