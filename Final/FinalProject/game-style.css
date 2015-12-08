@@ -22,7 +22,7 @@ body{
 #title{
 	font-size:70px;
 	position:absolute;
-	top:15%;
+	top:10%;
 	left:50%;
 }
 #welcome{
@@ -33,7 +33,7 @@ body{
 #gameStatus{
 	font-size: 40px;
 	position: absolute;
-	top:23%;
+	top:20%;
 	left: 20%;
 	color: yellow;
 	display:none;
