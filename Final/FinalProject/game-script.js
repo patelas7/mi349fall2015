@@ -16,7 +16,7 @@ $(document).ready(function(){
 //  };
   $('.letter').click(function(){
     clickedLetter($("#" + this.id).text());
-    $("#" + this.id).hide();
+    $("#" + this.id).prop("disabled", true);
   });
 
 });
