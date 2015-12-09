@@ -199,14 +199,14 @@ body{
 
 
 #title{
-	font-size:70px;
+	font-size:60px;
 	position:absolute;
-	top:10%;
+	top:16%;
 	left:50%;
 
 }
 #welcome{
-	font-size: 30px;
+	font-size: 25px;
 	position: absolute;
 	left: 70%;
 }
@@ -223,8 +223,8 @@ body{
 .canvas {
 	float:left;
 	overflow: hidden;
-  width: 600px;
-  height: 500px;
+	width: 60%;
+	height: 500px;
   margin-top: 150px;
   margin-left: 160px;
 	margin-bottom: 50px;
@@ -311,4 +311,63 @@ body{
 	font-size: 24px;
 	visibility: hidden;
 	display: none;
+}
+.startNewForm{
+	width:500px;
+	height:300px;
+	margin-left: 300px;
+	margin-top:200px;
+	background-color:#EBEBEB;
+	border-radius: 20px;
+	box-shadow:0px 0px 10px 0px #424242;
+	padding-top:5px;
+	padding-left:65px;
+	box-sizing:border-box;
+	font-family:helvetica;
+	display: block;
+}
+
+.startNewForm input {
+	width:375px;
+	display:block;
+	border-radius: 10px;
+	border: 2px solid #474747;
+	height: 25px;
+	margin-bottom: 15px;
+	box-shadow: 0px 0px 8px black;
+}
+
+.startNewForm #userNewButton{
+	background-color:#00EEEE;
+	margin-top: 40px;
+	width: 150px;
+	height: 35px;
+
+}
+
+p.userPG{
+	text-indent: 50px;
+	position: absolute;
+	margin-top: 50px;
+	margin-left:200px;
+	width: 700px;
+	height: 100px;
+	padding: 5px;
+	font-family: helvetica;
+	background-color: white;
+}
+
+.savedGamesForm{
+	width:500px;
+	min-height:300px;
+	margin-left: 300px;
+	margin-top: 100px;
+	background-color:#EBEBEB;
+	border-radius: 20px;
+	box-shadow:0px 0px 10px 0px #424242;
+	padding-top:5px;
+	padding-left:65px;
+	box-sizing:border-box;
+	font-family:helvetica;
+	display: block;
 }

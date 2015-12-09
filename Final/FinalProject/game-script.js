@@ -5,8 +5,8 @@ var bad = 0;
 
 $(document).ready(function(){
   $(".container").css({"background-color":"white"});
-  sessionStorage.setItem("word", "This isn't a bad test");
-  sessionStorage.setItem("hint", "This is a hint");
+  //sessionStorage.setItem("word", "This isn't a bad test");
+  //sessionStorage.setItem("hint", "This is a hint");
   getAlphabet();
 
   //document.getElementById('box').innerHTML = html;

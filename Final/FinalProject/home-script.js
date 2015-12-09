@@ -1,7 +1,6 @@
 var script = 'login.php';
 
 $(document).ready(function(){
-
    $("#signInButton").click(function(){
      $(".containerOverlay").css({"display":"block"});
      $(".signInForm").fadeIn();
@@ -26,7 +25,12 @@ $(document).ready(function(){
        var data = {'username':user,'password':pass, 'method':'login'};
 
        sendPost(script, data).done(function(data) {
-           console.log(data);
+         if(data.login == false)
+             alert(data.error);
+         else{
+             sessionStorage.setItem('username', user);
+             document.location.href = 'userPage.html';
+         }
        })
        .fail(function(xhr, textStatus, errorThrown){
            alert(xhr.responseText);
@@ -62,7 +66,12 @@ $(document).ready(function(){
       var data = {'username':user,'password':pass, 'method':'create'};
 
       sendPost(script, data).done(function(data) {
-          console.log(data);
+          if(data.create == false)
+              alert(data.error);
+          else{
+            sessionStorage.setItem("username", user);
+            document.location.href = 'userPage.html';
+          }
       })
       .fail(function(xhr, textStatus, errorThrown){
           alert(xhr.responseText);
@@ -71,16 +80,19 @@ $(document).ready(function(){
  });
 
  $("#burgerIcon").click(function(){
-   if($('.sideMenu').is(':visible')){
-     $(".sideMenu").css({"visibility":"hidden","display":"none"});
-   }
-   else{
-      $(".sideMenu").css({"visibility":"visible","display":"block"});
-   }
+   showMenu();
  });
 
 });
 
+function showMenu(){
+  if($('.sideMenu').is(':visible')){
+    $(".sideMenu").css({"visibility":"hidden","display":"none"});
+  }
+  else{
+     $(".sideMenu").css({"visibility":"visible","display":"block"});
+  }
+}
 
 function sendPost(script, data) {
     var url = 'http://webdev.cse.msu.edu/~patelas7/MI349/FinalPhp/' + script;
