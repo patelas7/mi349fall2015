@@ -2,9 +2,11 @@ var wordTemp = '';
 var wordLength = 0;
 var correct = 0;
 var bad = 0;
+var text = '';
 
 $(document).ready(function(){
   $(".container").css({"background-color":"white"});
+
   //sessionStorage.setItem("word", "This isn't a bad test");
   //sessionStorage.setItem("hint", "This is a hint");
   getAlphabet();
@@ -18,6 +20,24 @@ $(document).ready(function(){
   $('.letter').click(function(){
     clickedLetter($("#" + this.id).text());
     $("#" + this.id).prop("disabled", true);
+  });
+
+  $("#saveButton").click(function(){
+    //ajax call
+  });
+
+  $("#hintButton").click(function(){
+    alert(sessionStorage.hint);
+  });
+
+  $("#giveUpButton").click(function(){
+      $('.wordSolve').text(sessionStorage.word);
+      text = "You lose! Try again";
+      endOfGame(text);
+  });
+
+  $("#newButton").click(function(){
+    //remove key
   });
 
 });
@@ -79,12 +99,8 @@ function getAlphabet(){
 
 function drawMan(){
   if(correct == wordLength){
-    $("#saveButton").hide();
-    $("#hintButton").hide();
-    $("#giveUpButton").hide();
-    $("#newButton").css({"visibility":"visible","display":"block"});
-    $("#gameStatus").text("Congratulations! You solved it!");
-    $("#gameStatus").css({"visibility":"visible","display":"block"});
+    text = "Congratulations! You solved it!";
+    endOfGame(text);
   }
   else if(bad == 1){
       $(".canvas").css({"background-image": "url(hangman-images/noose.png)"});
@@ -115,16 +131,21 @@ function drawMan(){
   }
   else if(bad == 10){
     $(".canvas").css({"background-image": "url(hangman-images/mouth.png)"});
-    $("#saveButton").hide();
-    $("#hintButton").hide();
-    $("#giveUpButton").hide();
-    $("#newButton").css({"visibility":"visible","display":"block"});
-    $("#gameStatus").text("Game Over");
-    $("#gameStatus").css({"visibility":"visible","display":"block"});
+    text = "Game Over";
+    endOfGame(text);
 
   }
 }
 
 function setCSS(){
   $(".container").css({"background-color":"white"});
+}
+
+function endOfGame(text){
+  $("#saveButton").hide();
+  $("#hintButton").hide();
+  $("#giveUpButton").hide();
+  $("#newButton").css({"visibility":"visible","display":"block"});
+  $("#gameStatus").text(text);
+  $("#gameStatus").css({"visibility":"visible","display":"block"});
 }
