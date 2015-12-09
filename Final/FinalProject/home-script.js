@@ -1,3 +1,5 @@
+var script = '';
+
 $(document).ready(function(){
 
    $("#signInButton").click(function(){
@@ -22,7 +24,15 @@ $(document).ready(function(){
      else{
 
        var data = {'username':user,'password':pass, 'method':'login'};
-        $.ajax({
+       script = 'login.php';
+
+       sendPost(script, data).done(function(data) {
+           alert(data);
+       })
+       .fail(function(xhr, textStatus, errorThrown){
+           alert(xhr.responseText);
+       });
+      /*  $.ajax({
           url: 'http://webdev.cse.msu.edu/~patelas7/MI349/FinalPhp/login.php',
           type: 'POST',
           contentType:'application/json',
@@ -44,7 +54,7 @@ $(document).ready(function(){
                    alert(thrownError);
                }
            }
-        });
+        });*/
      }
   });
 
@@ -73,6 +83,7 @@ $(document).ready(function(){
     else{
 
       var data = {'username':user,'password':pass, 'method':'create'};
+
        $.ajax({
          url: 'http://webdev.cse.msu.edu/~patelas7/MI349/FinalPhp/login.php',
          type: 'POST',
@@ -109,3 +120,16 @@ $(document).ready(function(){
  });
 
 });
+
+
+function sendPost(script, data) {
+    var url = 'http://webdev.cse.msu.edu/~patelas7/MI349/FinalPhp/' + script;
+    return $.ajax({
+        url:  url,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        dataType: 'json'
+    });
+
+}

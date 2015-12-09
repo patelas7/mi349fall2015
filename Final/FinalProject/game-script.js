@@ -4,6 +4,7 @@ var correct = 0;
 var bad = 0;
 
 $(document).ready(function(){
+  $(".container").css({"background-color":"white"});
   sessionStorage.setItem("word", "This isn't a bad test");
   sessionStorage.setItem("hint", "This is a hint");
   getAlphabet();
@@ -122,4 +123,8 @@ function drawMan(){
     $("#gameStatus").css({"visibility":"visible","display":"block"});
 
   }
+}
+
+function setCSS(){
+  $(".container").css({"background-color":"white"});
 }
