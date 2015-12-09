@@ -23,7 +23,22 @@ $(document).ready(function(){
   });
 
   $("#saveButton").click(function(){
-    //ajax call
+    //ajax call $method $username, $title, $wordFinal, $wordTemp, $wordLength, $correct, $bad
+    var data = {'method':'save', 'username':sessionStorage.username, 'title':sessionStorage.title,
+    'wordFinal':sessionStorage.word, 'wordTemp':wordTemp, 'wordLength':wordlength, 'correct':correct, 'bad':bad};
+    sendPost('game.php', data).done(function(data) {
+        if(data.save == false)
+            alert(data.error);
+        else{
+          sessionStorage.setItem("username", user);
+          removeKeys();
+          document.location.href = 'userPage.html';
+        }
+    })
+    .fail(function(xhr, textStatus, errorThrown){
+        alert(xhr.responseText);
+    });
+
   });
 
   $("#hintButton").click(function(){
@@ -37,11 +52,8 @@ $(document).ready(function(){
   });
 
   $("#newButton").click(function(){
-    sessionStorage.removeItem(word);
-    sessionStorage.removeItem(hint);
-    sessionStorage.removeItem(correctSaved);
-    sessionStorage.removeItem(badSaved);
-    sessionStorage.removeItem(wordTempSaved)
+    removeKeys();
+    document.location.href = 'userPage.html';
   });
 
 });
@@ -152,4 +164,13 @@ function endOfGame(text){
   $("#newButton").css({"visibility":"visible","display":"block"});
   $("#gameStatus").text(text);
   $("#gameStatus").css({"visibility":"visible","display":"block"});
+}
+
+function removeKeys(){
+  sessionStorage.removeItem(savedGame);
+  sessionStorage.removeItem(word);
+  sessionStorage.removeItem(hint);
+  sessionStorage.removeItem(correctSaved);
+  sessionStorage.removeItem(badSaved);
+  sessionStorage.removeItem(wordTempSaved);
 }
