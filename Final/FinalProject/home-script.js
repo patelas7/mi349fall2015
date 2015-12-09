@@ -70,18 +70,7 @@ $(document).ready(function(){
               alert(data.error);
           else{
             sessionStorage.setItem("username", user);
-            data = {'method': 'retrieve', 'username': user};
-            sendPost('game.php', data).done(function(res){
-              if(res.hasGame == false){
-                sessionStorage.setItem("savedGame", false);
-              }
-              else{
-                sessionStorage.setItem("json", res);
-              }
-              document.location.href = 'userPage.html';
-            }).final(function(xhr, textStatus, errorThrown){
-              alert(xhr.responseText);
-            });
+            document.location.href = 'userPage.html';
 
           }
       })

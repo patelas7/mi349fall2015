@@ -1,5 +1,6 @@
-var user = '';
+var title = '';
 $(document).ready(function(){
+  getSaved();
   setCSS();
   $("#userNewButton").click(function(){
     var title = $('#userNewTitle').val();
@@ -22,4 +23,25 @@ function setCSS(){
   $(".container").css({"background-color":"#68838B"});
   $('#welcome').css({"font-size": "40px", "left" : "20%"});
   $('#welcome').text("Welcome " + sessionStorage.username);
+}
+
+function getJSON(){
+  $.each($.parseJSON(sessionStorage.json), function(idx, obj) {
+	   alert(obj.Title);
+  });
+}
+
+function getSaved(){
+  var data = {'method': 'retrieve', 'username': user};
+  sendPost('game.php', data).done(function(res){
+  if(res.hasGame == false){
+    sessionStorage.setItem("savedGame", false);
+  }
+  else{
+    sessionStorage.setItem("json", res);
+  }
+  }).final(function(xhr, textStatus, errorThrown){
+    alert(xhr.responseText);
+  });
+
 }
