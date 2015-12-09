@@ -30,7 +30,6 @@ $(document).ready(function(){
         if(data.save == false)
             alert(data.error);
         else{
-          sessionStorage.setItem("username", user);
           removeKeys();
           document.location.href = 'userPage.html';
         }
