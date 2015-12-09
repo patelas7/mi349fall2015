@@ -1,4 +1,4 @@
-var script = '';
+var script = 'login.php';
 
 $(document).ready(function(){
 
@@ -24,37 +24,14 @@ $(document).ready(function(){
      else{
 
        var data = {'username':user,'password':pass, 'method':'login'};
-       script = 'login.php';
 
        sendPost(script, data).done(function(data) {
-           alert(data);
+           console.log(data);
        })
        .fail(function(xhr, textStatus, errorThrown){
            alert(xhr.responseText);
        });
-      /*  $.ajax({
-          url: 'http://webdev.cse.msu.edu/~patelas7/MI349/FinalPhp/login.php',
-          type: 'POST',
-          contentType:'application/json',
-          data: JSON.stringify(data),
-          dataType:'json',
-          success: function(data){
-            //On ajax success do this
-              console.log();
-             },
-          error: function(xhr, ajaxOptions, thrownError) {
-             //On error do this
 
-               if (xhr.status == 200) {
-
-                   alert(ajaxOptions);
-               }
-               else {
-                   alert(xhr.status);
-                   alert(thrownError);
-               }
-           }
-        });*/
      }
   });
 
@@ -84,29 +61,12 @@ $(document).ready(function(){
 
       var data = {'username':user,'password':pass, 'method':'create'};
 
-       $.ajax({
-         url: 'http://webdev.cse.msu.edu/~patelas7/MI349/FinalPhp/login.php',
-         type: 'POST',
-         contentType:'application/json',
-         data: JSON.stringify(data),
-         dataType:'json',
-         success: function(data){
-           //On ajax success do this
-             console.log(data);
-            },
-         error: function(xhr, ajaxOptions, thrownError) {
-            //On error do this
-
-              if (xhr.status == 200) {
-
-                  alert(ajaxOptions);
-              }
-              else {
-                  alert(xhr.status);
-                  alert(thrownError);
-              }
-          }
-       });
+      sendPost(script, data).done(function(data) {
+          console.log(data);
+      })
+      .fail(function(xhr, textStatus, errorThrown){
+          alert(xhr.responseText);
+      });
     }
  });
 
