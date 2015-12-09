@@ -37,7 +37,11 @@ $(document).ready(function(){
   });
 
   $("#newButton").click(function(){
-    //remove key
+    sessionStorage.removeItem(word);
+    sessionStorage.removeItem(hint);
+    sessionStorage.removeItem(correctSaved);
+    sessionStorage.removeItem(badSaved);
+    sessionStorage.removeItem(wordTempSaved)
   });
 
 });
