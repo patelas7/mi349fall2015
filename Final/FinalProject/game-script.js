@@ -12,8 +12,16 @@ $(document).ready(function(){
   getAlphabet();
 
   //document.getElementById('box').innerHTML = html;
+  if(sessionStorage.savedGame == true){
+    wordTemp = sessionStorage.wordTemp;
+    wordLength = sessionStorage.wordLength;
+    correct = sessionStorage.correct;
+    bad = sessionStorage.bad;
+  }
+  else{
+      createGame();
+  }
 
-  createGame();
 //  var setLetter = function(x) {
   //  document.getElementById('name').innerHTML += x;
 //  };

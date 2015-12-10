@@ -1,6 +1,11 @@
 var title = '';
+var appendDiv = '';
+var data;
+var jsonData;
+var script = 'game.php';
 $(document).ready(function(){
   getSaved();
+  $('.savedGamesForm').append(appendDiv);
   setCSS();
   $("#userNewButton").click(function(){
     var title = $('#userNewTitle').val();
@@ -15,9 +20,20 @@ $(document).ready(function(){
       sessionStorage.setItem("word", word);
       sessionStorage.setItem("hint", hint);
       sessionStorage.setItem("title", title);
+      sessionStorage.setItem("savedGame", false);
       document.location.href = 'game.html';
     }
   });
+
+  alert($('.savedGamesForm').html());
+
+  $('.savedList').click(function(){
+    alert("here");
+    //clickedTitle($("#" + this.id).text());
+    //deleteGame($("#" + this.id).text());
+  });
+
+
 });
 
 function setCSS(){
@@ -27,38 +43,59 @@ function setCSS(){
   $('#welcome').text("Welcome " + sessionStorage.username);
 }
 
-function getJSON(){
-  $.each($.parseJSON(sessionStorage.json), function() {
-    alert("here");
-    //console.log(this);
-	   //alert(obj.Title);
+function setSavedList(){
+  var i = 0;
+
+  $.each(jsonData, function() {
+    appendDiv += '<div class=savedList id="save'+ i +'">' + this['Title'] +'</div>';
+    i++;
   });
 }
 
 function getSaved(){
-  var data = {'method': 'retrieve', 'username': sessionStorage.username};
-  var script = 'game.php';
+  data = {'method': 'retrieve', 'username': sessionStorage.username};
+
   sendPost(script, data).done(function(data) {
       if(data.hasGame == false){
         sessionStorage.setItem("savedGame", false);
       }
       else{
-        var jsonp = '[{"Lang":"jQuery","ID":"1"},{"Lang":"C#","ID":"2"}]';
-
-        var lang = '';
-        console.log(data);
-        console.log($.parseJSON(jsonp));
-        $.each(data, function(){
-          console.log(this['Title']);
-        });
-      //  console.log($.parseJSON(data));
-
-        //sessionStorage.setItem("json", data);
-      //  getJSON();
+        jsonData = data;
+        setSavedList();
       }
   })
   .fail(function(xhr, textStatus, errorThrown){
       alert(xhr.responseText);
   });
 
+}
+
+function clickedTitle(id){
+  sessionStorage.setItem("savedGame", true);
+  $.each(jsonData, function() {
+    if(this['Title'] == id){
+      sessionStorage.setItem("title", this['Title']);
+      sessionStorage.setItem("wordFinal", this['wordFinal']);
+      sessionStorage.setItem("wordTemp", this['wordTemp']);
+      sessionStorage.setItem("wordLength", this['wordLength']);
+      sessionStorage.setItem("correct", this['correct']);
+      sessionStorage.setItem("bad", this['bad']);
+    }
+  });
+}
+
+function deleteGame(id){
+  var data = {'method': 'delete', 'username': sessionStorage.username, 'title': id};
+  sendPost(script, data).done(function(data) {
+
+      if(data.delete == false){
+        alert(data.error);
+      }
+      else{
+        document.location.href = 'game.html';
+      }
+  })
+  .fail(function(xhr, textStatus, errorThrown){
+      alert(xhr.responseText);
+  });
 }
