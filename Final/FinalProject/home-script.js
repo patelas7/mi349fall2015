@@ -58,6 +58,8 @@ $(document).ready(function(){
     if(user == '' || pass == '' || repass == ''){
       alert("Fill in all fields of the form");
     }
+    else if(user.length > 14 )
+      alert("Username is too big");
     else if (pass != repass){
       alert("Passwords do not match!");
     }
@@ -71,7 +73,6 @@ $(document).ready(function(){
           else{
             sessionStorage.setItem("username", user);
             document.location.href = 'userPage.html';
-
           }
       })
       .fail(function(xhr, textStatus, errorThrown){
@@ -85,24 +86,3 @@ $(document).ready(function(){
  });
 
 });
-
-function showMenu(){
-  if($('.sideMenu').is(':visible')){
-    $(".sideMenu").css({"visibility":"hidden","display":"none"});
-  }
-  else{
-     $(".sideMenu").css({"visibility":"visible","display":"block"});
-  }
-}
-
-function sendPost(script, data) {
-    var url = 'http://webdev.cse.msu.edu/~patelas7/MI349/FinalPhp/' + script;
-    return $.ajax({
-        url:  url,
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(data),
-        dataType: 'json'
-    });
-
-}

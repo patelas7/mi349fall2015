@@ -6,8 +6,8 @@ var text = '';
 
 $(document).ready(function(){
   $(".container").css({"background-color":"white"});
-
-  //sessionStorage.setItem("word", "This isn't a bad test");
+  $('#welcome').text("Welcome " + sessionStorage.username);
+  $('#title').text(sessionStorage.title);
   //sessionStorage.setItem("hint", "This is a hint");
   getAlphabet();
 
@@ -25,7 +25,7 @@ $(document).ready(function(){
   $("#saveButton").click(function(){
     //ajax call $method $username, $title, $wordFinal, $wordTemp, $wordLength, $correct, $bad
     var data = {'method':'save', 'username':sessionStorage.username, 'title':sessionStorage.title,
-    'wordFinal':sessionStorage.word, 'wordTemp':wordTemp, 'wordLength':wordlength, 'correct':correct, 'bad':bad};
+    'wordFinal':sessionStorage.word, 'wordTemp':wordTemp, 'wordLength':wordLength, 'correct':correct, 'bad':bad};
     sendPost('game.php', data).done(function(data) {
         if(data.save == false)
             alert(data.error);
@@ -166,10 +166,11 @@ function endOfGame(text){
 }
 
 function removeKeys(){
-  sessionStorage.removeItem(savedGame);
-  sessionStorage.removeItem(word);
-  sessionStorage.removeItem(hint);
-  sessionStorage.removeItem(correctSaved);
-  sessionStorage.removeItem(badSaved);
-  sessionStorage.removeItem(wordTempSaved);
+  sessionStorage.removeItem("savedGame");
+  sessionStorage.removeItem("word");
+  sessionStorage.removeItem("title");
+  sessionStorage.removeItem("hint");
+  sessionStorage.removeItem("correctSaved");
+  sessionStorage.removeItem("badSaved");
+  sessionStorage.removeItem("wordTempSaved");
 }

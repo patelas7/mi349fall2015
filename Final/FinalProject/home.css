@@ -199,16 +199,20 @@ body{
 
 
 #title{
-	font-size:60px;
+	font-size:58px;
 	position:absolute;
-	top:16%;
-	left:50%;
-
+	top:12%;
+	left:20%;
+	word-wrap: break-word;
+	word-break: break-all;
 }
 #welcome{
 	font-size: 25px;
 	position: absolute;
 	left: 70%;
+	word-wrap: break-word;
+	word-break: break-all;
+
 }
 #gameStatus{
 	font-size: 40px;
@@ -250,16 +254,16 @@ body{
 
 .wordSolve{
 	clear: both;
-	width: 600px;
-	min-height: 100px;
 	margin-left:200px;
 	margin-top: 150px;
 	border-radius: 25px;
 	border: 2px solid navy;
-	padding: 20px;
-	white-space: pre;
-	font-size: 35px;
+	width: 600px;
+	min-height: 100px;
 	letter-spacing: 10px;
+	font-size: 35px;
+	padding: 20px;
+	word-wrap: break-word;
 }
 
 .buttons {
