@@ -54,7 +54,7 @@ function setSavedList(){
 
 function getSaved(){
   data = {'method': 'retrieve', 'username': sessionStorage.username};
-
+ //changes save
   sendPost(script, data).done(function(data) {
       if(data.hasGame == false){
         sessionStorage.setItem("savedGame", false);
