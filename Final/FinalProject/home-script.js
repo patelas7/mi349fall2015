@@ -81,5 +81,9 @@ $(document).ready(function(){
     }
  });
 
+ $('#helpButton').click(function(){
+     document.location.href = 'help.html';
+ });
+
 
 });

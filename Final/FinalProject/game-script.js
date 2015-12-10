@@ -6,7 +6,8 @@ var clickedString = '';
 var text = '';
 
 $(document).ready(function(){
-  $(".container").css({"background-color":"white"});
+  $(".container").css({"background-color":"#e5f2ff"});
+  $(".top").css({"background-position":"center"});
   $('#welcome').text("Welcome " + sessionStorage.username);
   $('#title').text(sessionStorage.title);
   //sessionStorage.setItem("hint", "This is a hint");
@@ -19,7 +20,7 @@ $(document).ready(function(){
     console.log("correct" + sessionStorage.correct);
     console.log("bad" + sessionStorage.bad);
     console.log("clickedString" + sessionStorage.clickedString);
-    
+
     wordTemp = sessionStorage.wordTemp;
     wordLength = sessionStorage.wordLength;
     correct = sessionStorage.correct;

@@ -4,7 +4,6 @@ var data;
 var jsonData;
 var script = 'game.php';
 $(document).ready(function(){
-  data = {'method': 'retrieve', 'username': sessionStorage.username};
  //changes save
   getSaved();
   setCSS();
@@ -26,7 +25,12 @@ $(document).ready(function(){
     }
   });
 
-
+  $("#homeIcon").click(function(){
+    backHome();
+  });
+  $('#helpButton').click(function(){
+      document.location.href = 'help.html';
+  });
 
 });
 

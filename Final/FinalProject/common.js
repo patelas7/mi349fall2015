@@ -1,9 +1,16 @@
-function showMenu(){
-  if($('.sideMenu').is(':visible')){
-    $(".sideMenu").css({"visibility":"hidden","display":"none"});
-  }
-  else{
-     $(".sideMenu").css({"visibility":"visible","display":"block"});
+function backHome(){
+  if(sessionStorage.username != null){
+    var data = {'method':'logout', 'username' : sessionStorage.username};
+    sendPost('login.php', data).done(function(data) {
+        if(data.logout == false)
+            alert(data.error);
+        else{
+          document.location.href = 'home.html';
+        }
+    })
+    .fail(function(xhr, textStatus, errorThrown){
+        alert(xhr.responseText);
+    });
   }
 }
 
