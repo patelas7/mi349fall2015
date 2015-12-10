@@ -81,8 +81,5 @@ $(document).ready(function(){
     }
  });
 
- $("#burgerIcon").click(function(){
-   showMenu();
- });
 
 });

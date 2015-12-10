@@ -4,8 +4,9 @@ var data;
 var jsonData;
 var script = 'game.php';
 $(document).ready(function(){
+  data = {'method': 'retrieve', 'username': sessionStorage.username};
+ //changes save
   getSaved();
-  $('.savedGamesForm').append(appendDiv);
   setCSS();
   $("#userNewButton").click(function(){
     var title = $('#userNewTitle').val();
@@ -20,18 +21,11 @@ $(document).ready(function(){
       sessionStorage.setItem("word", word);
       sessionStorage.setItem("hint", hint);
       sessionStorage.setItem("title", title);
-      sessionStorage.setItem("savedGame", false);
+      sessionStorage.setItem("savedGame", "false");
       document.location.href = 'game.html';
     }
   });
 
-  alert($('.savedGamesForm').html());
-
-  $('.savedList').click(function(){
-    alert("here");
-    //clickedTitle($("#" + this.id).text());
-    //deleteGame($("#" + this.id).text());
-  });
 
 
 });
@@ -57,11 +51,18 @@ function getSaved(){
  //changes save
   sendPost(script, data).done(function(data) {
       if(data.hasGame == false){
-        sessionStorage.setItem("savedGame", false);
+        sessionStorage.setItem("savedGame", "false");
       }
       else{
+        $('.savedGamesForm h2').text("Displaying Saved Games");
         jsonData = data;
         setSavedList();
+        $('.savedGamesForm').append(appendDiv);
+        $('.savedList').click(function(){
+
+          clickedTitle($("#" + this.id).text());
+          deleteGame($("#" + this.id).text());
+        });
       }
   })
   .fail(function(xhr, textStatus, errorThrown){
@@ -71,15 +72,17 @@ function getSaved(){
 }
 
 function clickedTitle(id){
-  sessionStorage.setItem("savedGame", true);
+  sessionStorage.setItem("savedGame", "true");
   $.each(jsonData, function() {
     if(this['Title'] == id){
       sessionStorage.setItem("title", this['Title']);
-      sessionStorage.setItem("wordFinal", this['wordFinal']);
+      sessionStorage.setItem("hint", this['hint']);
+      sessionStorage.setItem("word", this['wordFinal']);
       sessionStorage.setItem("wordTemp", this['wordTemp']);
       sessionStorage.setItem("wordLength", this['wordLength']);
       sessionStorage.setItem("correct", this['correct']);
       sessionStorage.setItem("bad", this['bad']);
+      sessionStorage.setItem("clickedString", this['clickedString']);
     }
   });
 }
@@ -87,15 +90,16 @@ function clickedTitle(id){
 function deleteGame(id){
   var data = {'method': 'delete', 'username': sessionStorage.username, 'title': id};
   sendPost(script, data).done(function(data) {
-
-      if(data.delete == false){
-        alert(data.error);
-      }
-      else{
-        document.location.href = 'game.html';
-      }
+    if(data.delete == false){
+      console.log(data);
+      alert(data.error);
+    }
+    else{
+      document.location.href = 'game.html';
+    }
   })
   .fail(function(xhr, textStatus, errorThrown){
+      alert("here");
       alert(xhr.responseText);
   });
 }

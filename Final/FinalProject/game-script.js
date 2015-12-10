@@ -2,6 +2,7 @@ var wordTemp = '';
 var wordLength = 0;
 var correct = 0;
 var bad = 0;
+var clickedString = '';
 var text = '';
 
 $(document).ready(function(){
@@ -12,11 +13,21 @@ $(document).ready(function(){
   getAlphabet();
 
   //document.getElementById('box').innerHTML = html;
-  if(sessionStorage.savedGame == true){
+  if(sessionStorage.savedGame == "true"){
+    console.log("wordTemp" + sessionStorage.wordTemp);
+    console.log("wordLength" + sessionStorage.wordLength);
+    console.log("correct" + sessionStorage.correct);
+    console.log("bad" + sessionStorage.bad);
+    console.log("clickedString" + sessionStorage.clickedString);
+    
     wordTemp = sessionStorage.wordTemp;
     wordLength = sessionStorage.wordLength;
     correct = sessionStorage.correct;
     bad = sessionStorage.bad;
+    clickedString = sessionStorage.clickedString;
+    $('.wordSolve').text(wordTemp);
+    savedLetters();
+    drawMan();
   }
   else{
       createGame();
@@ -27,13 +38,14 @@ $(document).ready(function(){
 //  };
   $('.letter').click(function(){
     clickedLetter($("#" + this.id).text());
+    clickedString += $("#" + this.id).text();
     $("#" + this.id).prop("disabled", true);
   });
 
   $("#saveButton").click(function(){
     //ajax call $method $username, $title, $wordFinal, $wordTemp, $wordLength, $correct, $bad
-    var data = {'method':'save', 'username':sessionStorage.username, 'title':sessionStorage.title,
-    'wordFinal':sessionStorage.word, 'wordTemp':wordTemp, 'wordLength':wordLength, 'correct':correct, 'bad':bad};
+    var data = {'method':'save', 'username':sessionStorage.username, 'title':sessionStorage.title, 'hint':sessionStorage.hint,
+    'wordFinal':sessionStorage.word, 'wordTemp':wordTemp, 'wordLength':wordLength, 'correct':correct, 'bad':bad, 'clickedString':clickedString};
     sendPost('game.php', data).done(function(data) {
         if(data.save == false)
             alert(data.error);
@@ -73,7 +85,7 @@ function clickedLetter(id){
 
       if(id == sessionStorage.word.charAt(i).toUpperCase()){
 
-        wordTemp[i] = id;
+        wordTemp[i] = sessionStorage.word.charAt(i);
         //console.log("wordTemp: " + wordTemp[i]);
         correct++;
         guess = true;
@@ -89,8 +101,14 @@ function clickedLetter(id){
     wordTemp = wordTemp.join("");
     $('.wordSolve').text(wordTemp);
 
+  }
+}
 
-
+function savedLetters(){
+  for(var i=0; i<clickedString.length;i++){
+    if(/^[a-zA-Z]+$/.test(clickedString.charAt(i))){
+     $("#" + clickedString.charAt(i).toUpperCase()).prop("disabled", true);
+    }
   }
 }
 
@@ -171,14 +189,18 @@ function endOfGame(text){
   $("#newButton").css({"visibility":"visible","display":"block"});
   $("#gameStatus").text(text);
   $("#gameStatus").css({"visibility":"visible","display":"block"});
+  $('.wordSolve').text(sessionStorage.word);
 }
 
 function removeKeys(){
+
   sessionStorage.removeItem("savedGame");
   sessionStorage.removeItem("word");
   sessionStorage.removeItem("title");
   sessionStorage.removeItem("hint");
-  sessionStorage.removeItem("correctSaved");
-  sessionStorage.removeItem("badSaved");
-  sessionStorage.removeItem("wordTempSaved");
+  sessionStorage.removeItem("correct");
+  sessionStorage.removeItem("bad");
+  sessionStorage.removeItem("wordTemp");
+  sessionStorage.removeItem("wordLength");
+  sessionStorage.removeItem("clickedString");
 }
