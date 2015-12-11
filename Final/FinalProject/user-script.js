@@ -4,7 +4,6 @@ var data;
 var jsonData;
 var script = 'game.php';
 $(document).ready(function(){
- //changes save
   getSaved();
   setCSS();
   $("#userNewButton").click(function(){
@@ -25,9 +24,6 @@ $(document).ready(function(){
     }
   });
 
-  $("#homeIcon").click(function(){
-    backHome();
-  });
   $('#helpButton').click(function(){
       document.location.href = 'help.html';
   });
@@ -68,7 +64,6 @@ function setSavedList(){
 
 function getSaved(){
   data = {'method': 'retrieve', 'username': sessionStorage.username};
- //changes save
   sendPost(script, data).done(function(data) {
       if(data.hasGame == false){
         sessionStorage.setItem("savedGame", "false");

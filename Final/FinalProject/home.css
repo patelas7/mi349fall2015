@@ -145,15 +145,14 @@ label{
 	left: 70%;
 	word-wrap: break-word;
 	word-break: break-all;
-
 }
 #gameStatus{
 	font-size: 40px;
 	position: absolute;
-	top:20%;
+	top:17%;
 	left: 20%;
 	color: yellow;
-	display:none;
+	display: none;
 	visibility: hidden;
 }
 
@@ -162,7 +161,7 @@ label{
 	overflow: hidden;
 	width: 100%;
 	height: 500px;
-  margin-top: 150px;
+  margin-top: 200px;
   margin-left: 160px;
 	margin-bottom: 50px;
 	background-image: url(hangman-images/canvas.png);
@@ -284,11 +283,9 @@ label{
 p.userPG{
 	text-indent: 50px;
 	position: absolute;
-	top: 20%;
+	top: 15%;
+	margin: 5px;
 	word-wrap: break-word;
-	word-break: break-all;
-
-	padding: 5px;
 	font-family: helvetica;
 	background-color: white;
 }
@@ -375,6 +372,7 @@ p.userPG{
 
 	.savedGamesForm,
 	.startNewForm{
+		margin-top: 250px;
 		margin-left: 0px;
 		width: 400px;
 		padding-left: 20px;

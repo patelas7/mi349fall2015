@@ -10,15 +10,9 @@ $(document).ready(function(){
   $(".top").css({"background-position":"center"});
   $('#welcome').text("Welcome " + sessionStorage.username);
   $('#title').text(sessionStorage.title);
-
   getAlphabet();
 
   if(sessionStorage.savedGame == "true"){
-    console.log("wordTemp" + sessionStorage.wordTemp);
-    console.log("wordLength" + sessionStorage.wordLength);
-    console.log("correct" + sessionStorage.correct);
-    console.log("bad" + sessionStorage.bad);
-    console.log("clickedString" + sessionStorage.clickedString);
 
     wordTemp = sessionStorage.wordTemp;
     wordLength = sessionStorage.wordLength;
@@ -37,6 +31,8 @@ $(document).ready(function(){
     clickedLetter($("#" + this.id).text());
     clickedString += $("#" + this.id).text();
     $("#" + this.id).prop("disabled", true);
+    if(bad == 10)
+      $(".wordSolve").text(sessionStorage.word);
   });
 
   $("#saveButton").click(function(){
@@ -72,6 +68,8 @@ $(document).ready(function(){
     document.location.href = 'userPage.html';
   });
 
+  $(window).resize(drawMan);
+
 });
 
 function clickedLetter(id){
@@ -93,7 +91,7 @@ function clickedLetter(id){
       drawMan();
     }
     wordTemp = wordTemp.join("");
-    $('.wordSolve').text(wordTemp);
+    $(".wordSolve").text(wordTemp);
 
   }
 }
@@ -118,7 +116,7 @@ function createGame(){
     }
   }
 
-  $('.wordSolve').text(wordTemp);
+  $(".wordSolve").text(wordTemp);
 }
 
 function getAlphabet(){
@@ -135,69 +133,70 @@ function drawMan(){
     endOfGame(text);
   }
   else if(bad == 1){
-    if($(".container").css("width") <= "825px")
-      $(".canvas").css({"background-image": "url(hangman-images/nooseMin.png)"});
+    if($(".container").width() <= 825)
+      $(".canvas").css({"background-image": "url(hangman-images/MinScreen/nooseMin.png)"});
     else
       $(".canvas").css({"background-image": "url(hangman-images/noose.png)"});
 
   }
   else if(bad == 2){
-    if($(".container").css("width") <= "825px")
-      $(".canvas").css({"background-image": "url(hangman-images/headMin.png)"});
+    if($(".container").width() <= 825)
+      $(".canvas").css({"background-image": "url(hangman-images/MinScreen/headMin.png)"});
     else
       $(".canvas").css({"background-image": "url(hangman-images/head.png)"});
   }
   else if(bad == 3){
-    if($(".container").css("width") <= "825px")
-      $(".canvas").css({"background-image": "url(hangman-images/bodyMin.png)"});
+    if($(".container").width() <= 825)
+      $(".canvas").css({"background-image": "url(hangman-images/MinScreen/bodyMin.png)"});
     else
       $(".canvas").css({"background-image": "url(hangman-images/body.png)"});
   }
   else if(bad == 4){
-    if($(".container").css("width") <= "825px")
-      $(".canvas").css({"background-image": "url(hangman-images/left-leg-min.png)"});
+    if($(".container").width() <= 825)
+      $(".canvas").css({"background-image": "url(hangman-images/MinScreen/left-leg-min.png)"});
     else
       $(".canvas").css({"background-image": "url(hangman-images/left-leg.png)"});
   }
   else if(bad == 5){
-    if($(".container").css("width") <= "825px")
-      $(".canvas").css({"background-image": "url(hangman-images/right-leg-min.png)"});
+    if($(".container").width() <= 825)
+      $(".canvas").css({"background-image": "url(hangman-images/MinScreen/right-leg-min.png)"});
     else
       $(".canvas").css({"background-image": "url(hangman-images/right-leg.png)"});
   }
   else if(bad == 6){
-    if($(".container").css("width") <= "825px")
-      $(".canvas").css({"background-image": "url(hangman-images/left-hand-min.png)"});
+    if($(".container").width() <= 825)
+      $(".canvas").css({"background-image": "url(hangman-images/MinScreen/left-hand-min.png)"});
     else
       $(".canvas").css({"background-image": "url(hangman-images/left-hand.png)"});
   }
   else if(bad == 7){
-    if($(".container").css("width") <= "825px")
-      $(".canvas").css({"background-image": "url(hangman-images/right-hand-min.png)"});
+    if($(".container").width() <= 825)
+      $(".canvas").css({"background-image": "url(hangman-images/MinScreen/right-hand-min.png)"});
     else
       $(".canvas").css({"background-image": "url(hangman-images/right-hand.png)"});
   }
   else if(bad == 8){
-    if($(".container").css("width") <= "825px")
-      $(".canvas").css({"background-image": "url(hangman-images/left-eye-min.png)"});
+    if($(".container").width() <= 825)
+      $(".canvas").css({"background-image": "url(hangman-images/MinScreen/left-eye-min.png)"});
     else
       $(".canvas").css({"background-image": "url(hangman-images/left-eye.png)"});
   }
   else if(bad == 9){
-    if($(".container").css("width") <= "825px")
-      $(".canvas").css({"background-image": "url(hangman-images/right-eye-min.png)"});
+    if($(".container").width() <= 825)
+      $(".canvas").css({"background-image": "url(hangman-images/MinScreen/right-eye-min.png)"});
     else
       $(".canvas").css({"background-image": "url(hangman-images/right-eye.png)"});
   }
   else if(bad == 10){
-    if($(".container").css("width") <= "825px")
-      $(".canvas").css({"background-image": "url(hangman-images/mouthMin.png)"});
-    else
+    if($(".container").width() <= 825){
+      $(".canvas").css({"background-image": "url(hangman-images/MinScreen/mouthMin.png)"});
+    }
+    else{
       $(".canvas").css({"background-image": "url(hangman-images/mouth.png)"});
-    text = "Game Over";
-    endOfGame(text);
-
+    }
+    endOfGame("Game Over");
   }
+
 }
 
 function setCSS(){
@@ -211,7 +210,6 @@ function endOfGame(text){
   $("#newButton").css({"visibility":"visible","display":"block"});
   $("#gameStatus").text(text);
   $("#gameStatus").css({"visibility":"visible","display":"block"});
-  $('.wordSolve').text(sessionStorage.word);
 }
 
 function removeKeys(){
