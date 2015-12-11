@@ -10,10 +10,9 @@ $(document).ready(function(){
   $(".top").css({"background-position":"center"});
   $('#welcome').text("Welcome " + sessionStorage.username);
   $('#title').text(sessionStorage.title);
-  //sessionStorage.setItem("hint", "This is a hint");
+
   getAlphabet();
 
-  //document.getElementById('box').innerHTML = html;
   if(sessionStorage.savedGame == "true"){
     console.log("wordTemp" + sessionStorage.wordTemp);
     console.log("wordLength" + sessionStorage.wordLength);
@@ -34,9 +33,6 @@ $(document).ready(function(){
       createGame();
   }
 
-//  var setLetter = function(x) {
-  //  document.getElementById('name').innerHTML += x;
-//  };
   $('.letter').click(function(){
     clickedLetter($("#" + this.id).text());
     clickedString += $("#" + this.id).text();
@@ -44,7 +40,7 @@ $(document).ready(function(){
   });
 
   $("#saveButton").click(function(){
-    //ajax call $method $username, $title, $wordFinal, $wordTemp, $wordLength, $correct, $bad
+
     var data = {'method':'save', 'username':sessionStorage.username, 'title':sessionStorage.title, 'hint':sessionStorage.hint,
     'wordFinal':sessionStorage.word, 'wordTemp':wordTemp, 'wordLength':wordLength, 'correct':correct, 'bad':bad, 'clickedString':clickedString};
     sendPost('game.php', data).done(function(data) {
@@ -83,11 +79,8 @@ function clickedLetter(id){
     wordTemp = wordTemp.split("");
     var guess = false;
     for(var i=0; i<sessionStorage.word.length;i++){
-
       if(id == sessionStorage.word.charAt(i).toUpperCase()){
-
         wordTemp[i] = sessionStorage.word.charAt(i);
-        //console.log("wordTemp: " + wordTemp[i]);
         correct++;
         guess = true;
         if(correct == wordLength){
@@ -132,9 +125,6 @@ function getAlphabet(){
   var c;
   for (var i = 65; 90 >= i; i++) {
     c = String.fromCharCode(i);
-    //http://codepen.io/anon/pen/XXWajZ
-    //html += '<button onclick="setLetter(\'' + c + '\');">' + c + '</button>';
-    //html += '<button onclick="setLetter(\'' + c + '\');">' + c + '</button>';
     $('.alphabet').append('<button class=letter id="'+ c +'">' + c +'</button>');
   }
 }
@@ -145,34 +135,65 @@ function drawMan(){
     endOfGame(text);
   }
   else if(bad == 1){
+    if($(".container").css("width") <= "825px")
+      $(".canvas").css({"background-image": "url(hangman-images/nooseMin.png)"});
+    else
       $(".canvas").css({"background-image": "url(hangman-images/noose.png)"});
+
   }
   else if(bad == 2){
-    $(".canvas").css({"background-image": "url(hangman-images/head.png)"});
+    if($(".container").css("width") <= "825px")
+      $(".canvas").css({"background-image": "url(hangman-images/headMin.png)"});
+    else
+      $(".canvas").css({"background-image": "url(hangman-images/head.png)"});
   }
   else if(bad == 3){
-    $(".canvas").css({"background-image": "url(hangman-images/body.png)"});
+    if($(".container").css("width") <= "825px")
+      $(".canvas").css({"background-image": "url(hangman-images/bodyMin.png)"});
+    else
+      $(".canvas").css({"background-image": "url(hangman-images/body.png)"});
   }
   else if(bad == 4){
-    $(".canvas").css({"background-image": "url(hangman-images/left-leg.png)"});
+    if($(".container").css("width") <= "825px")
+      $(".canvas").css({"background-image": "url(hangman-images/left-leg-min.png)"});
+    else
+      $(".canvas").css({"background-image": "url(hangman-images/left-leg.png)"});
   }
   else if(bad == 5){
-    $(".canvas").css({"background-image": "url(hangman-images/right-leg.png)"});
+    if($(".container").css("width") <= "825px")
+      $(".canvas").css({"background-image": "url(hangman-images/right-leg-min.png)"});
+    else
+      $(".canvas").css({"background-image": "url(hangman-images/right-leg.png)"});
   }
   else if(bad == 6){
-    $(".canvas").css({"background-image": "url(hangman-images/left-hand.png)"});
+    if($(".container").css("width") <= "825px")
+      $(".canvas").css({"background-image": "url(hangman-images/left-hand-min.png)"});
+    else
+      $(".canvas").css({"background-image": "url(hangman-images/left-hand.png)"});
   }
   else if(bad == 7){
-    $(".canvas").css({"background-image": "url(hangman-images/right-hand.png)"});
+    if($(".container").css("width") <= "825px")
+      $(".canvas").css({"background-image": "url(hangman-images/right-hand-min.png)"});
+    else
+      $(".canvas").css({"background-image": "url(hangman-images/right-hand.png)"});
   }
   else if(bad == 8){
-    $(".canvas").css({"background-image": "url(hangman-images/left-eye.png)"});
+    if($(".container").css("width") <= "825px")
+      $(".canvas").css({"background-image": "url(hangman-images/left-eye-min.png)"});
+    else
+      $(".canvas").css({"background-image": "url(hangman-images/left-eye.png)"});
   }
   else if(bad == 9){
-    $(".canvas").css({"background-image": "url(hangman-images/right-eye.png)"});
+    if($(".container").css("width") <= "825px")
+      $(".canvas").css({"background-image": "url(hangman-images/right-eye-min.png)"});
+    else
+      $(".canvas").css({"background-image": "url(hangman-images/right-eye.png)"});
   }
   else if(bad == 10){
-    $(".canvas").css({"background-image": "url(hangman-images/mouth.png)"});
+    if($(".container").css("width") <= "825px")
+      $(".canvas").css({"background-image": "url(hangman-images/mouthMin.png)"});
+    else
+      $(".canvas").css({"background-image": "url(hangman-images/mouth.png)"});
     text = "Game Over";
     endOfGame(text);
 

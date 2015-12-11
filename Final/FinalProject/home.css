@@ -201,8 +201,8 @@ label{
 .buttons {
 	display:block;
 	margin-left: 165px;
-	width:800px;
-	height:140px;
+	max-width:800px;
+	min-height:140px;
 	color:black;
 	padding-top: 50px;
 }
@@ -342,6 +342,7 @@ p.userPG{
 	}
 
 }
+
 @media screen and (max-width:410px){
 	.container{
 		width: 410px;
