@@ -32,6 +32,22 @@ $(document).ready(function(){
       document.location.href = 'help.html';
   });
 
+  $("#homeIcon").click(function(){
+
+    var data = {'method':'logout', 'username' : sessionStorage.username};
+    sendPost('login.php', data).done(function(data) {
+        if(data.logout == false)
+            alert(data.error);
+        else{
+          document.location.href = 'home.html';
+        }
+    })
+    .fail(function(xhr, textStatus, errorThrown){
+        alert(xhr.responseText);
+    });
+
+  });
+
 });
 
 function setCSS(){
